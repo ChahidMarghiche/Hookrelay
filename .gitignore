@@ -156,6 +156,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+environement/
+
+# SQLite database files
+*.db
 
 # Spyder project settings
 .spyderproject

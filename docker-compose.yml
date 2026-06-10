@@ -1,0 +1,13 @@
+services:
+  hookrelay:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Store the SQLite file on a named volume so events survive restarts.
+      HOOKRELAY_DB: /data/hookrelay.db
+    volumes:
+      - hookrelay-data:/data
+
+volumes:
+  hookrelay-data:
