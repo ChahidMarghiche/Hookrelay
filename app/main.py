@@ -18,6 +18,7 @@ import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.responses import RedirectResponse
 
 from . import security, store
 from .delivery import worker_loop
@@ -45,6 +46,11 @@ app = FastAPI(
     "verification, retries, and delivery observability.",
     lifespan=lifespan,
 )
+
+
+@app.get("/", include_in_schema=False)
+def root() -> RedirectResponse:
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/healthz", tags=["ops"])
